@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://divx5g1at5sil"
-path="res://.godot/imported/player.png-e230e05e2d932a710303ee07f401e40f.ctex"
+uid="uid://c53dpl6pw3u73"
+path="res://.godot/imported/Slime_Spiked_Full.png-c585a39ca3f9a79e90a03b5841e836b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/player.png"
-dest_files=["res://.godot/imported/player.png-e230e05e2d932a710303ee07f401e40f.ctex"]
+source_file="res://assets/enemy/Slime_Spiked_Full.png"
+dest_files=["res://.godot/imported/Slime_Spiked_Full.png-c585a39ca3f9a79e90a03b5841e836b9.ctex"]
 
 [params]
 

@@ -7,10 +7,6 @@ var last_move_direction = Vector2.DOWN  # Сохраняем последнее 
 # Получаем ссылки на ноды
 @onready var animated_sprite = $AnimatedSprite2D
 
-func _input(event):
-	if event.is_action_pressed(&"click"):
-		target = get_global_mouse_position()
-
 func _physics_process(delta):
 	var move_direction = position.direction_to(target)
 	velocity = move_direction * speed

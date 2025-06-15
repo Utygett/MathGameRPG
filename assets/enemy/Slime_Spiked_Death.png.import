@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://divx5g1at5sil"
-path="res://.godot/imported/player.png-e230e05e2d932a710303ee07f401e40f.ctex"
+uid="uid://cpibnivkhmj2"
+path="res://.godot/imported/Slime_Spiked_Death.png-6330175ae1357776d504a8c795d9acb6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/player.png"
-dest_files=["res://.godot/imported/player.png-e230e05e2d932a710303ee07f401e40f.ctex"]
+source_file="res://assets/enemy/Slime_Spiked_Death.png"
+dest_files=["res://.godot/imported/Slime_Spiked_Death.png-6330175ae1357776d504a8c795d9acb6.ctex"]
 
 [params]
 
