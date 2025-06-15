@@ -1,0 +1,92 @@
+[gd_scene load_steps=12 format=3 uid="uid://pyotbvavr6fp"]
+
+[ext_resource type="Script" uid="uid://gqs4tao2mfef" path="res://scene/player/player.gd" id="1_cm2cf"]
+[ext_resource type="Texture2D" uid="uid://bk5t6fpc1cqo5" path="res://assets/player/Player.png" id="1_v7pse"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cm2cf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6smn3"]
+atlas = ExtResource("1_v7pse")
+region = Rect2(726, 753, 242, 251)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lop3"]
+atlas = ExtResource("1_v7pse")
+region = Rect2(500, 504, 250, 252)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajqqa"]
+atlas = ExtResource("1_v7pse")
+region = Rect2(500, 756, 250, 252)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkmeh"]
+atlas = ExtResource("1_v7pse")
+region = Rect2(490, 0, 245, 260)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_732fb"]
+atlas = ExtResource("1_v7pse")
+region = Rect2(735, 0, 245, 260)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfhxk"]
+atlas = ExtResource("1_v7pse")
+region = Rect2(488, 259, 244, 259)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pisg7"]
+atlas = ExtResource("1_v7pse")
+region = Rect2(732, 259, 244, 259)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oypl4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6smn3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lop3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajqqa")
+}],
+"loop": true,
+"name": &"move_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkmeh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_732fb")
+}],
+"loop": true,
+"name": &"move_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfhxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pisg7")
+}],
+"loop": true,
+"name": &"move_up",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_cm2cf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_cm2cf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -11)
+scale = Vector2(0.124585, 0.0974723)
+sprite_frames = SubResource("SpriteFrames_oypl4")
+animation = &"move_right"
+frame_progress = 0.882368

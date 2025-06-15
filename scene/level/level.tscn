@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=4 uid="uid://csqha7q3bs6tv"]
+[gd_scene load_steps=4 format=4 uid="uid://csqha7q3bs6tv"]
 
 [ext_resource type="TileSet" uid="uid://bpgwlhiqgi5o7" path="res://scene/level/level.tres" id="1_1c01b"]
+[ext_resource type="PackedScene" uid="uid://pyotbvavr6fp" path="res://scene/player/player.tscn" id="2_5lpb7"]
+[ext_resource type="Script" uid="uid://d1up6lbob0sea" path="res://scene/level/camera_2d.gd" id="3_s8ale"]
 
 [node name="Level" type="Node"]
 
@@ -19,3 +21,9 @@ tile_set = ExtResource("1_1c01b")
 [node name="Nature" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAVAAYAAAADAAAAAAAXAAcAAAAFAAAAAAAZAAcAAAAGAAAAAAAbAAcAAAAHAAAAAAAdAAcAAAAIAAAAAAAVAAgAAAADAAIAAAAVAAkAAAAEAAIAAAAVAAoAAAAFAAIAAAAWAAkAAAAFAAEAAAAYAAkAAAAGAAEAAAAaAAkAAAAHAAEAAAAcAAkAAAAIAAEAAAAXAAsAAAAGAAIAAAAZAAsAAAAHAAIAAAAbAAoAAAAIAAIAAAAXAA0AAAAFAAMAAAAZAA0AAAAGAAMAAAAbAA0AAAAHAAMAAAAeAAsAAAAIAAQAAAAdAAoAAAAHAAQAAAAiAA8AAAAHAAQAAAAhAAsAAAAHAAQAAAAgAA4AAAAHAAQAAAAgAA8AAAAHAAQAAAAeABYAAAAHAAQAAAAbABYAAAAHAAQAAAAYABUAAAAHAAQAAAAbABUAAAAHAAQAAAAfABcAAAAGAAQAAAAhABQAAAAGAAQAAAAgABIAAAAGAAQAAAAiABEAAAAGAAQAAAAZABcAAAAFAAQAAAAZABUAAAAFAAQAAAASABIAAAAFAAQAAAAOABIAAAAFAAQAAAANABEAAAAFAAQAAAAVABEAAAAFAAQAAAAfAAsAAAAFAAQAAAAmAA4AAAAFAAQAAAAXABAAAAABAAMAAAAXAA8AAAAAAAMAAAA=")
 tile_set = ExtResource("1_1c01b")
+
+[node name="Player" parent="." instance=ExtResource("2_5lpb7")]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_s8ale")
