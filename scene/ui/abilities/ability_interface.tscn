@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://brhqladcev05e"]
+
+[ext_resource type="Script" uid="uid://w5n5gr7iths7" path="res://scene/ui/abilities/ability_interface.gd" id="1_4v1h7"]
+
+[node name="AbilityInterface" type="CanvasLayer" groups=["UI"]]
+script = ExtResource("1_4v1h7")
+
+[node name="MarginContainer" type="MarginContainer" parent="." groups=["UI"]]
+light_mask = 3
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 0
+
+[node name="1AbilitySlot" type="Button" parent="MarginContainer"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="2AbilitySlot" type="Button" parent="MarginContainer"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="3AbilitySlot" type="Button" parent="MarginContainer"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="4AbilitySlot" type="Button" parent="MarginContainer"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[connection signal="pressed" from="MarginContainer/1AbilitySlot" to="." method="_on_1ability_slot_pressed"]
+[connection signal="pressed" from="MarginContainer/2AbilitySlot" to="." method="_on_2ability_slot_pressed"]
+[connection signal="pressed" from="MarginContainer/3AbilitySlot" to="." method="_on_3ability_slot_pressed"]
+[connection signal="pressed" from="MarginContainer/4AbilitySlot" to="." method="_on_4ability_slot_pressed"]
