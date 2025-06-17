@@ -1,6 +1,12 @@
 extends CharacterBody2D
 
 @export var speed = 50
+@export var max_health = 100
+@export var max_energy = 100
+@export var max_mathemana = 100
+var current_health = 70
+var current_energy = 70
+var current_mathemana = 70
 var last_move_direction = Vector2.DOWN  # Сохраняем последнее направление для анимации idle
 var is_attacking = false # Флаг для отслеживания состояния атаки
 # Получаем ссылки на ноды
@@ -22,9 +28,11 @@ func _process(_delta: float) -> void:
 	elif direction.y > 0.5:
 		animated_sprite.play("move_down")
 	elif direction.x > 0.5:
-		animated_sprite.play("move_right")
+			animated_sprite.play("move_right")
+			animated_sprite.flip_h = false  # Отражение для правой стороны
 	elif direction.x < -0.5:
-		animated_sprite.play("move_left")
+			animated_sprite.play("move_right")
+			animated_sprite.flip_h = true
 	else:
 		animated_sprite.play("idle")
 
