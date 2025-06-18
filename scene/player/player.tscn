@@ -365,3 +365,9 @@ shape = SubResource("CircleShape2D_cm2cf")
 script = ExtResource("4_5lop3")
 
 [node name="PlayerStatusBars" parent="." instance=ExtResource("5_ajqqa")]
+anchors_preset = 12
+anchor_left = 0.0
+anchor_right = 1.0
+offset_top = 177.0
+offset_bottom = 177.0
+size_flags_vertical = 8
