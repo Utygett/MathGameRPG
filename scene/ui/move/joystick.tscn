@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://qc6pkssrv33b"]
+
+[ext_resource type="Script" uid="uid://brfsusmkukog2" path="res://scene/ui/move/joystick.gd" id="1_gi1jb"]
+[ext_resource type="Texture2D" uid="uid://drf5xlr3ex6ul" path="res://assets/ui/move_control/joystic_circle.png" id="1_uadm7"]
+[ext_resource type="Texture2D" uid="uid://c53t6eaqeeirh" path="res://assets/ui/move_control/joystic_dot.png" id="2_rpgr0"]
+[ext_resource type="Script" uid="uid://ba3feteffcjc4" path="res://scene/ui/move/joystic_dot.gd" id="4_shlf7"]
+
+[node name="Joystick" type="Node2D"]
+script = ExtResource("1_gi1jb")
+
+[node name="JoysticCircle" type="Sprite2D" parent="."]
+scale = Vector2(4.76573, 4.15259)
+texture = ExtResource("1_uadm7")
+
+[node name="JoysticDot" type="Sprite2D" parent="."]
+scale = Vector2(2.8, 2.56)
+texture = ExtResource("2_rpgr0")
+script = ExtResource("4_shlf7")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -13.0
+offset_top = -12.0
+offset_right = -5.0
+offset_bottom = -4.0
+scale = Vector2(3.22388, 2.97787)
+
+[connection signal="button_down" from="Button" to="JoysticDot" method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="JoysticDot" method="_on_button_button_up"]
