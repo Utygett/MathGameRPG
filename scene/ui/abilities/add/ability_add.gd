@@ -1,18 +1,30 @@
 extends CanvasLayer
 
 @onready var summ_label: Label = %SummLabel
-@onready var answer_line_edit: LineEdit = %AnswerLineEdit
+@onready var answer_label: Label = %AnswerLabel
 
-var m_ansver = 10
+var m_first:int = 0
+var m_second:int = 0
 
-func _on_answer_line_edit_text_changed(new_text: String) -> void:
-	print(new_text)
-	if new_text.to_int() == 10:
-		var player  = get_tree().get_first_node_in_group("player")
-		if player != null:
-			player.attack_skill()
-			queue_free()
+func _ready() -> void:
+	m_first = randi_range(1,9)
+	m_second = randi_range(1,9)
+	summ_label.text = str(m_first) + " + " + str(m_second) + " = "
 
+func _on_num_pad_panel_num_pressed(num: String) -> void:
+	if num == "remove":
+		var ans = answer_label.text
+		if ans:
+			answer_label.text = ans.left(-1)  # Эквивалентно my_string[:-1] в Python
+	elif num == "solve":
+		solve_expression()
+	else:
+		answer_label.text += num
 
-func _on_cancel_button_pressed() -> void:
+func solve_expression():
+	var player  = get_tree().get_first_node_in_group("player")
+	var summ = m_first + m_second
+	var answer = answer_label.text.to_int()
+	if summ == answer:
+		player.add_mathemana(5)
 	queue_free()

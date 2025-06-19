@@ -1,12 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bk24v7lnvnq11"]
+[gd_scene load_steps=4 format=3 uid="uid://bk24v7lnvnq11"]
 
 [ext_resource type="Script" uid="uid://bqcufrt81a873" path="res://scene/ui/abilities/add/ability_add.gd" id="1_t4lcx"]
+[ext_resource type="PackedScene" uid="uid://c7y7jf2ya5fa4" path="res://scene/ui/num_panels/num_pad_panel.tscn" id="2_e6lcc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6lcc"]
+bg_color = Color(0.533702, 0.666395, 0.796112, 0.301961)
 
 [node name="AbilityAdd" type="CanvasLayer" groups=["UI"]]
 script = ExtResource("1_t4lcx")
 
 [node name="MarginContainer" type="MarginContainer" parent="." groups=["UI"]]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(100, 50)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -34,17 +38,12 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "5 + 4 ="
 
-[node name="AnswerLineEdit" type="LineEdit" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="AnswerLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "9"
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_e6lcc")
 
-[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
-layout_mode = 2
+[node name="NumPadPanel" parent="." instance=ExtResource("2_e6lcc")]
 
-[node name="CancelButton" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "Cancel"
-
-[connection signal="text_changed" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/AnswerLineEdit" to="." method="_on_answer_line_edit_text_changed"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="num_pressed" from="NumPadPanel" to="." method="_on_num_pad_panel_num_pressed"]

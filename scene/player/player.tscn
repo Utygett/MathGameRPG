@@ -350,7 +350,8 @@ animations = [{
 script = ExtResource("1_cm2cf")
 
 [node name="Joystick" parent="." instance=ExtResource("2_rkmeh")]
-position = Vector2(-249, 126)
+position = Vector2(-133, 77)
+scale = Vector2(0.64, 0.759999)
 
 [node name="MoveComponent" parent="." instance=ExtResource("2_6smn3")]
 unique_name_in_owner = true
@@ -369,9 +370,15 @@ shape = SubResource("CircleShape2D_cm2cf")
 script = ExtResource("4_5lop3")
 
 [node name="PlayerStatusBars" parent="." instance=ExtResource("5_ajqqa")]
-anchors_preset = 12
+anchors_preset = 0
 anchor_left = 0.0
-anchor_right = 1.0
-offset_top = 177.0
-offset_bottom = 177.0
-size_flags_vertical = 8
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -103.0
+offset_top = -90.0
+offset_right = -103.0
+offset_bottom = -90.0
+grow_horizontal = 1
+grow_vertical = 1
+size_flags_horizontal = 0

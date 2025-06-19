@@ -1,0 +1,97 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7y7jf2ya5fa4"]
+
+[ext_resource type="Script" uid="uid://cddm5m2sr4ils" path="res://scene/ui/num_panels/num_pad_panel.gd" id="1_5cs2e"]
+
+[node name="NumPadPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5cs2e")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -98.0
+offset_bottom = 136.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="OneButton" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+text = "1"
+
+[node name="TwoButton" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+text = "2"
+
+[node name="ThreeButton" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+text = "3"
+
+[node name="FourButton" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "4"
+
+[node name="FiveButton" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "5"
+
+[node name="SixButton" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "6"
+
+[node name="SevenButton" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "7"
+
+[node name="EightButton" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "8"
+
+[node name="NineButton" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "9"
+
+[node name="AddButton" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "+"
+
+[node name="ZeroButton" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="RemoveButton" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "del"
+
+[node name="SolveButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SOLVE"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/OneButton" to="." method="_on_one_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/TwoButton" to="." method="_on_two_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/ThreeButton" to="." method="_on_three_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/FourButton" to="." method="_on_four_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/FiveButton" to="." method="_on_five_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/SixButton" to="." method="_on_six_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/SevenButton" to="." method="_on_seven_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/EightButton" to="." method="_on_eight_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/NineButton" to="." method="_on_nine_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/AddButton" to="." method="_on_add_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/ZeroButton" to="." method="_on_zero_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/RemoveButton" to="." method="_on_remove_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SolveButton" to="." method="_on_solve_button_pressed"]

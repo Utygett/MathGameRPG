@@ -13,6 +13,7 @@ var is_attacking = false # Флаг для отслеживания состоя
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var move_component: Node = %MoveComponent
 @onready var joystick: Node2D = $Joystick
+@onready var player_status_bars: PlayerStatusBar = $PlayerStatusBars
 
 
 
@@ -85,3 +86,7 @@ func attack_skill():
 	await animated_sprite.animation_finished
 	is_attacking = false
 	play_idle_animation(last_move_direction)  # Возвращаемся в idle
+
+func add_mathemana(mathemana:int):
+	current_mathemana = min(max_mathemana, current_mathemana + mathemana)
+	player_status_bars.set_mathemana(float(current_mathemana) / float(max_mathemana))
