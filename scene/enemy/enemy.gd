@@ -6,6 +6,9 @@ var last_move_direction = Vector2.DOWN  # Сохраняем последнее 
 
 # Получаем ссылки на ноды
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var targeted: Sprite2D = $Targeted
+
+
 
 func _physics_process(delta):
 	var move_direction = position.direction_to(target)
@@ -52,3 +55,6 @@ func play_idle_animation(last_direction: Vector2):
 			animated_sprite.play("idle")
 		else:
 			animated_sprite.play("idle_up")
+
+func has_been_target(check:bool):
+	targeted.visible = check

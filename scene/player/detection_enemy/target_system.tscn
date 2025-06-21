@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://soa7a0pge1wj"]
+
+[ext_resource type="Script" uid="uid://k4r7q1w4tovk" path="res://scene/player/detection_enemy/enemy_detecion_area.gd" id="1_6vuqp"]
+[ext_resource type="Script" uid="uid://cqpccaqmyvp5y" path="res://scene/player/detection_enemy/target_system.gd" id="1_82uav"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ajqqa"]
+
+[node name="TargetSystem" type="Node2D"]
+script = ExtResource("1_82uav")
+
+[node name="EnemyDetecionArea" type="Area2D" parent="."]
+script = ExtResource("1_6vuqp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetecionArea"]
+scale = Vector2(7, 7)
+shape = SubResource("CircleShape2D_ajqqa")
+debug_color = Color(0.700132, 0.476212, 0.347973, 0.42)
+
+[node name="TargetSelector" type="Node" parent="."]

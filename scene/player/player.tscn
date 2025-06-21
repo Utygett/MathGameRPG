@@ -1,10 +1,11 @@
-[gd_scene load_steps=50 format=3 uid="uid://pyotbvavr6fp"]
+[gd_scene load_steps=51 format=3 uid="uid://pyotbvavr6fp"]
 
 [ext_resource type="Script" uid="uid://gqs4tao2mfef" path="res://scene/player/player.gd" id="1_cm2cf"]
 [ext_resource type="PackedScene" uid="uid://dup23ieasrn3m" path="res://scene/components/move_component.tscn" id="2_6smn3"]
 [ext_resource type="Texture2D" uid="uid://divx5g1at5sil" path="res://assets/player/player.png" id="2_cm2cf"]
 [ext_resource type="Script" uid="uid://d1up6lbob0sea" path="res://scene/level/camera_2d.gd" id="4_5lop3"]
 [ext_resource type="PackedScene" uid="uid://be1kw2g1tru0d" path="res://scene/ui/player_ui.tscn" id="5_ajqqa"]
+[ext_resource type="PackedScene" uid="uid://soa7a0pge1wj" path="res://scene/player/detection_enemy/target_system.tscn" id="6_rkmeh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6smn3"]
 atlas = ExtResource("2_cm2cf")
@@ -365,3 +366,5 @@ shape = SubResource("CircleShape2D_cm2cf")
 script = ExtResource("4_5lop3")
 
 [node name="PlayerUI" parent="." instance=ExtResource("5_ajqqa")]
+
+[node name="TargetSystem" parent="." instance=ExtResource("6_rkmeh")]
