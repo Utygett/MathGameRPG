@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://be1kw2g1tru0d"]
+
+[ext_resource type="Script" uid="uid://pttbf11yowmt" path="res://scene/ui/player_ui.gd" id="1_dfkps"]
+[ext_resource type="PackedScene" uid="uid://cnwcooqeblcu8" path="res://scene/ui/bars/player_status_bars.tscn" id="1_xsc0i"]
+[ext_resource type="PackedScene" uid="uid://qc6pkssrv33b" path="res://scene/ui/move/joystick.tscn" id="2_6mojq"]
+[ext_resource type="PackedScene" uid="uid://brhqladcev05e" path="res://scene/ui/abilities/ability_interface.tscn" id="3_w3avs"]
+
+[node name="PlayerUI" type="CanvasLayer"]
+script = ExtResource("1_dfkps")
+
+[node name="PlayerStatusBars" parent="." instance=ExtResource("1_xsc0i")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 30)
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Joystick" parent="." instance=ExtResource("2_6mojq")]
+unique_name_in_owner = true
+position = Vector2(43, 198)
+
+[node name="AbilityInterface" parent="." instance=ExtResource("3_w3avs")]

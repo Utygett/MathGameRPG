@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://divx5g1at5sil"
-path="res://.godot/imported/player.png-e230e05e2d932a710303ee07f401e40f.ctex"
+uid="uid://bxsk5ag6xcphc"
+path="res://.godot/imported/Joystick.png-a77b44a12d6623882742434f246efcc1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/player.png"
-dest_files=["res://.godot/imported/player.png-e230e05e2d932a710303ee07f401e40f.ctex"]
+source_file="res://assets/ui/move_control/Joystick.png"
+dest_files=["res://.godot/imported/Joystick.png-a77b44a12d6623882742434f246efcc1.ctex"]
 
 [params]
 

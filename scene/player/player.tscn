@@ -1,11 +1,10 @@
-[gd_scene load_steps=51 format=3 uid="uid://pyotbvavr6fp"]
+[gd_scene load_steps=50 format=3 uid="uid://pyotbvavr6fp"]
 
 [ext_resource type="Script" uid="uid://gqs4tao2mfef" path="res://scene/player/player.gd" id="1_cm2cf"]
 [ext_resource type="PackedScene" uid="uid://dup23ieasrn3m" path="res://scene/components/move_component.tscn" id="2_6smn3"]
-[ext_resource type="Texture2D" uid="uid://divx5g1at5sil" path="res://assets/player/Player.png" id="2_cm2cf"]
-[ext_resource type="PackedScene" uid="uid://qc6pkssrv33b" path="res://scene/ui/move/joystick.tscn" id="2_rkmeh"]
+[ext_resource type="Texture2D" uid="uid://divx5g1at5sil" path="res://assets/player/player.png" id="2_cm2cf"]
 [ext_resource type="Script" uid="uid://d1up6lbob0sea" path="res://scene/level/camera_2d.gd" id="4_5lop3"]
-[ext_resource type="PackedScene" uid="uid://cnwcooqeblcu8" path="res://scene/ui/bars/player_status_bars.tscn" id="5_ajqqa"]
+[ext_resource type="PackedScene" uid="uid://be1kw2g1tru0d" path="res://scene/ui/player_ui.tscn" id="5_ajqqa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6smn3"]
 atlas = ExtResource("2_cm2cf")
@@ -349,10 +348,6 @@ animations = [{
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_cm2cf")
 
-[node name="Joystick" parent="." instance=ExtResource("2_rkmeh")]
-position = Vector2(-133, 77)
-scale = Vector2(0.64, 0.759999)
-
 [node name="MoveComponent" parent="." instance=ExtResource("2_6smn3")]
 unique_name_in_owner = true
 
@@ -369,16 +364,4 @@ shape = SubResource("CircleShape2D_cm2cf")
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("4_5lop3")
 
-[node name="PlayerStatusBars" parent="." instance=ExtResource("5_ajqqa")]
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -103.0
-offset_top = -90.0
-offset_right = -103.0
-offset_bottom = -90.0
-grow_horizontal = 1
-grow_vertical = 1
-size_flags_horizontal = 0
+[node name="PlayerUI" parent="." instance=ExtResource("5_ajqqa")]

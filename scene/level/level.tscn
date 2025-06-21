@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=4 uid="uid://csqha7q3bs6tv"]
+[gd_scene load_steps=4 format=4 uid="uid://csqha7q3bs6tv"]
 
 [ext_resource type="TileSet" uid="uid://bpgwlhiqgi5o7" path="res://scene/level/level.tres" id="1_1c01b"]
 [ext_resource type="PackedScene" uid="uid://pyotbvavr6fp" path="res://scene/player/player.tscn" id="2_5lpb7"]
-[ext_resource type="PackedScene" uid="uid://brhqladcev05e" path="res://scene/ui/abilities/ability_interface.tscn" id="4_plauu"]
 [ext_resource type="PackedScene" uid="uid://c4xufgjfvkk6g" path="res://scene/enemy/enemy.tscn" id="4_s8ale"]
 
 [node name="Level" type="Node"]
@@ -28,5 +27,3 @@ unique_name_in_owner = true
 
 [node name="Enemy" parent="." instance=ExtResource("4_s8ale")]
 position = Vector2(48, 55)
-
-[node name="AbilityInterface" parent="." instance=ExtResource("4_plauu")]

@@ -12,10 +12,15 @@ var is_attacking = false # Флаг для отслеживания состоя
 # Получаем ссылки на ноды
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var move_component: Node = %MoveComponent
-@onready var joystick: Node2D = $Joystick
-@onready var player_status_bars: PlayerStatusBar = $PlayerStatusBars
 
+@onready var player_ui: CanvasLayer = $PlayerUI
 
+var player_status_bars: PlayerStatusBar
+var joystick: Node2D
+
+func _ready() -> void:
+	player_status_bars = player_ui.player_status_bars
+	joystick = player_ui.joystick
 
 func _process(_delta: float) -> void:
 	if is_attacking:
@@ -30,14 +35,14 @@ func _process(_delta: float) -> void:
 	#else:
 		#velocity = Vector2.ZERO
 	move_and_slide()
-	if direction.y < -0.5:
+	if direction.y < -0.3:
 		animated_sprite.play("move_up")
-	elif direction.y > 0.5:
+	elif direction.y > 0.3:
 		animated_sprite.play("move_down")
-	elif direction.x > 0.5:
+	elif direction.x > 0.3:
 			animated_sprite.play("move_right")
 			animated_sprite.flip_h = false  # Отражение для правой стороны
-	elif direction.x < -0.5:
+	elif direction.x < -0.3:
 			animated_sprite.play("move_right")
 			animated_sprite.flip_h = true
 	else:

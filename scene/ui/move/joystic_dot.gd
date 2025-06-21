@@ -2,7 +2,7 @@ extends Sprite2D
 
 @onready var joystick: Node2D = $".."
 
-@export var max_lenght = 50
+@export var max_lenght = 40
 @export var deadzone = 5
 
 var m_pressing = false
