@@ -35,6 +35,10 @@ func _process(_delta: float) -> void:
 	if current_state != State.ATTACK:
 		move()
 
+func spent_mathemana(count:int):
+	current_mathemana = max(0, current_mathemana - count)
+	update_mathemana()
+
 func base_attack():
 	if current_state == State.ATTACK:
 		return
@@ -74,6 +78,7 @@ func base_attack():
 		else:
 			# Атака вверх
 			animated_sprite.play("attack_up")
+	spent_mathemana(1)
 	target_enemy.take_damage(get_base_attack_damage())
 	await animated_sprite.animation_finished
 	current_state = State.IDLE
@@ -101,9 +106,12 @@ func play_idle_animation(last_direction: Vector2):
 func attack_skill():
 	print("player attack")
 
+func update_mathemana():
+	player_status_bars.set_mathemana(float(current_mathemana) / float(max_mathemana))
+
 func add_mathemana(mathemana:int):
 	current_mathemana = min(max_mathemana, current_mathemana + mathemana)
-	player_status_bars.set_mathemana(float(current_mathemana) / float(max_mathemana))
+	update_mathemana()
 
 func get_base_attack_damage() -> float:
 	return randf_range(8,13)
