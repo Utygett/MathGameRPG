@@ -354,6 +354,8 @@ script = ExtResource("1_cm2cf")
 unique_name_in_owner = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_732fb")]
+unique_name_in_owner = true
+max_health = 150.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -17)

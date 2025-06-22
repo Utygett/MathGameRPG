@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var move_component: Node = %MoveComponent
 @onready var player_ui: CanvasLayer = $PlayerUI
 @onready var target_system: Node2D = %TargetSystem
+@onready var health_component: HealthComponent = %HealthComponent
 
 var current_health = 70
 var current_energy = 70
@@ -30,6 +31,11 @@ func _ready() -> void:
 	player_status_bars = player_ui.player_status_bars
 	joystick = player_ui.joystick
 	InputManager.base_attack_pressed.connect(base_attack)
+	health_component.connect("health_change", health_change)
+	player_status_bars.set_health(1.0)
+
+func health_change(current_health, max_health):
+	player_status_bars.set_health(current_health / max_health)
 
 func _process(_delta: float) -> void:
 	if current_state != State.ATTACK:
@@ -79,6 +85,7 @@ func base_attack():
 			# Атака вверх
 			animated_sprite.play("attack_up")
 	spent_mathemana(1)
+	health_component.take_damage(3, target_enemy)
 	target_enemy.take_damage(get_base_attack_damage())
 	await animated_sprite.animation_finished
 	current_state = State.IDLE
