@@ -2,10 +2,11 @@ extends Node
 class_name HealthComponent
 
 signal died
-signal health_change
+signal health_change(current_health:float, max_health:float)
 
 @export var max_health:float = 10
 @export var damage_text_scene:PackedScene
+
 
 var current_health:float
 
@@ -19,7 +20,7 @@ func take_damage(damage):
 	damage_text_instance.global_position = owner.global_position
 	damage_text_instance.damage_text(damage)
 	current_health = max(current_health - damage, 0)
-	health_change.emit()
+	health_change.emit(current_health, max_health)
 	Callable(check_death).call_deferred()
 
 func get_health_value():

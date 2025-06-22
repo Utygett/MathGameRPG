@@ -67,7 +67,7 @@ func take_damage(damage:int):
 	health_component.take_damage(damage)
 
 func on_died():
-	var back_layer = get_tree().get_first_node_in_group("back_layer")
+	#var back_layer = get_tree().get_first_node_in_group("back_layer")
 	#var death_instance = death_scene.instantiate() as DeathComp
 	#back_layer.add_child(death_instance)
 	#death_instance.gpu_particles_2d.texture = sprite

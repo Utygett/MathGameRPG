@@ -1,11 +1,39 @@
-[gd_scene load_steps=21 format=3 uid="uid://c4xufgjfvkk6g"]
+[gd_scene load_steps=24 format=3 uid="uid://c4xufgjfvkk6g"]
 
 [ext_resource type="Texture2D" uid="uid://b1m86yicmou3q" path="res://assets/enemy/Slime_Spiked_Ability.png" id="1_msiye"]
 [ext_resource type="Script" uid="uid://c2sun7dooa7mx" path="res://scene/enemy/enemy.gd" id="1_tu2m7"]
 [ext_resource type="Texture2D" uid="uid://bpewqs3nrijig" path="res://assets/enemy/Slime_Spiked_Idle.png" id="2_tu2m7"]
+[ext_resource type="Script" uid="uid://dqaloj8rp8lfj" path="res://scene/enemy/health_bar.gd" id="3_27n4c"]
 [ext_resource type="Texture2D" uid="uid://4vtibjxfpgyw" path="res://assets/enemy/Slime_Spiked_Run.png" id="3_dd7y5"]
 [ext_resource type="Texture2D" uid="uid://dbk66ojamrf50" path="res://assets/level/objects/Egg_item.png" id="5_dd7y5"]
 [ext_resource type="PackedScene" uid="uid://pu60fle5eyc7" path="res://scene/components/health_component.tscn" id="6_u8b2j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ragj"]
+content_margin_left = 1.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
+bg_color = Color(0.305882, 0.0627451, 0, 0.368627)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epgpp"]
+content_margin_left = 1.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
+bg_color = Color(0.591247, 0.155361, 0.111635, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.937063, 0.344914, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u8b2j"]
 atlas = ExtResource("1_msiye")
@@ -201,7 +229,26 @@ radius = 9.7737
 script = ExtResource("1_tu2m7")
 
 [node name="HealthComponent" parent="." instance=ExtResource("6_u8b2j")]
+unique_name_in_owner = true
 max_health = 100.0
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(25, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.5
+offset_right = 12.5
+offset_bottom = 4.0
+grow_horizontal = 2
+pivot_offset = Vector2(12.5, 0)
+theme_override_styles/background = SubResource("StyleBoxFlat_2ragj")
+theme_override_styles/fill = SubResource("StyleBoxFlat_epgpp")
+max_value = 1.0
+value = 0.5
+show_percentage = false
+script = ExtResource("3_27n4c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -17)

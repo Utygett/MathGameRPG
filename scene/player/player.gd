@@ -74,7 +74,7 @@ func base_attack():
 		else:
 			# Атака вверх
 			animated_sprite.play("attack_up")
-	target_enemy.take_damage(15)
+	target_enemy.take_damage(get_base_attack_damage())
 	await animated_sprite.animation_finished
 	current_state = State.IDLE
 
@@ -104,6 +104,9 @@ func attack_skill():
 func add_mathemana(mathemana:int):
 	current_mathemana = min(max_mathemana, current_mathemana + mathemana)
 	player_status_bars.set_mathemana(float(current_mathemana) / float(max_mathemana))
+
+func get_base_attack_damage() -> float:
+	return randf_range(8,13)
 
 func move():
 	var movement = movement_vector()
