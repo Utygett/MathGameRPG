@@ -31,6 +31,8 @@ func set_target(new_target: Node2D):
 
 # Публичный интерфейс для игрока
 func get_current_target() -> Node2D:
+	if current_target == null:
+		clear_target()
 	return current_target
 
 # Обработка ввода
