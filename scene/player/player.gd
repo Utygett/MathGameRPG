@@ -30,7 +30,7 @@ func _process(_delta: float) -> void:
 		move()
 
 func base_attack():
-	var target_enemy = target_system.get_current_target() as Node2D
+	var target_enemy = target_system.get_current_target()
 	var attack_range = 25
 	if not target_enemy:
 		return
@@ -65,6 +65,7 @@ func base_attack():
 		else:
 			# Атака вверх
 			animated_sprite.play("attack_up")
+	target_enemy.take_damage(15)
 	await animated_sprite.animation_finished
 	current_state = State.IDLE
 

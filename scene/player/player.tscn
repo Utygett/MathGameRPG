@@ -1,8 +1,9 @@
-[gd_scene load_steps=51 format=3 uid="uid://pyotbvavr6fp"]
+[gd_scene load_steps=52 format=3 uid="uid://pyotbvavr6fp"]
 
 [ext_resource type="Script" uid="uid://gqs4tao2mfef" path="res://scene/player/player.gd" id="1_cm2cf"]
 [ext_resource type="PackedScene" uid="uid://dup23ieasrn3m" path="res://scene/components/move_component.tscn" id="2_6smn3"]
 [ext_resource type="Texture2D" uid="uid://divx5g1at5sil" path="res://assets/player/player.png" id="2_cm2cf"]
+[ext_resource type="PackedScene" uid="uid://pu60fle5eyc7" path="res://scene/components/health_component.tscn" id="3_732fb"]
 [ext_resource type="Script" uid="uid://d1up6lbob0sea" path="res://scene/level/camera_2d.gd" id="4_5lop3"]
 [ext_resource type="PackedScene" uid="uid://be1kw2g1tru0d" path="res://scene/ui/player_ui.tscn" id="5_ajqqa"]
 [ext_resource type="PackedScene" uid="uid://soa7a0pge1wj" path="res://scene/player/detection_enemy/target_system.tscn" id="6_rkmeh"]
@@ -351,6 +352,8 @@ script = ExtResource("1_cm2cf")
 
 [node name="MoveComponent" parent="." instance=ExtResource("2_6smn3")]
 unique_name_in_owner = true
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_732fb")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -17)

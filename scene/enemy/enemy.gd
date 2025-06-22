@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
+@onready var health_component: HealthComponent = $HealthComponent
+
 @export var speed = 50
-@export var health = 100
 var target = position
 var last_move_direction = Vector2.DOWN  # Сохраняем последнее направление для анимации idle
 
@@ -9,6 +10,8 @@ var last_move_direction = Vector2.DOWN  # Сохраняем последнее 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var targeted: Sprite2D = $Targeted
 
+func _ready() -> void:
+	health_component.died.connect(on_died)
 
 func _physics_process(delta):
 	var move_direction = position.direction_to(target)
@@ -59,3 +62,15 @@ func play_idle_animation(last_direction: Vector2):
 
 func has_been_target(check:bool):
 	targeted.visible = check
+
+func take_damage(damage:int):
+	health_component.take_damage(damage)
+
+func on_died():
+	var back_layer = get_tree().get_first_node_in_group("back_layer")
+	#var death_instance = death_scene.instantiate() as DeathComp
+	#back_layer.add_child(death_instance)
+	#death_instance.gpu_particles_2d.texture = sprite
+	#death_instance.sprite_offest.position.y = animated_sprite_2d.offset.y
+	#death_instance.global_position = global_position
+	queue_free()
