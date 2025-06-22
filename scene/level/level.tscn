@@ -22,11 +22,15 @@ tile_set = ExtResource("1_1c01b")
 tile_map_data = PackedByteArray("AAAVAAYAAAADAAAAAAAXAAcAAAAFAAAAAAAZAAcAAAAGAAAAAAAbAAcAAAAHAAAAAAAdAAcAAAAIAAAAAAAVAAgAAAADAAIAAAAVAAkAAAAEAAIAAAAVAAoAAAAFAAIAAAAWAAkAAAAFAAEAAAAYAAkAAAAGAAEAAAAaAAkAAAAHAAEAAAAcAAkAAAAIAAEAAAAXAAsAAAAGAAIAAAAZAAsAAAAHAAIAAAAbAAoAAAAIAAIAAAAXAA0AAAAFAAMAAAAZAA0AAAAGAAMAAAAbAA0AAAAHAAMAAAAeAAsAAAAIAAQAAAAdAAoAAAAHAAQAAAAiAA8AAAAHAAQAAAAhAAsAAAAHAAQAAAAgAA4AAAAHAAQAAAAgAA8AAAAHAAQAAAAeABYAAAAHAAQAAAAbABYAAAAHAAQAAAAYABUAAAAHAAQAAAAbABUAAAAHAAQAAAAfABcAAAAGAAQAAAAhABQAAAAGAAQAAAAgABIAAAAGAAQAAAAiABEAAAAGAAQAAAAZABcAAAAFAAQAAAAZABUAAAAFAAQAAAASABIAAAAFAAQAAAAOABIAAAAFAAQAAAANABEAAAAFAAQAAAAVABEAAAAFAAQAAAAfAAsAAAAFAAQAAAAmAA4AAAAFAAQAAAAXABAAAAABAAMAAAAXAA8AAAAAAAMAAAA=")
 tile_set = ExtResource("1_1c01b")
 
-[node name="Player" parent="." instance=ExtResource("2_5lpb7")]
+[node name="FrontLayer" type="Node2D" parent="." groups=["front_layer"]]
+
+[node name="BackLayer" type="Node2D" parent="." groups=["back_layer"]]
+
+[node name="Player" parent="BackLayer" instance=ExtResource("2_5lpb7")]
 unique_name_in_owner = true
 
-[node name="Enemy" parent="." instance=ExtResource("4_s8ale")]
+[node name="Enemy" parent="BackLayer" instance=ExtResource("4_s8ale")]
 position = Vector2(48, 55)
 
-[node name="Enemy2" parent="." instance=ExtResource("4_s8ale")]
+[node name="Enemy2" parent="BackLayer" instance=ExtResource("4_s8ale")]
 position = Vector2(-75, 205)

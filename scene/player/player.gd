@@ -8,7 +8,6 @@ extends CharacterBody2D
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var move_component: Node = %MoveComponent
 @onready var player_ui: CanvasLayer = $PlayerUI
-@onready var base_melee_attack: Node2D = $BaseMeleeAttack
 @onready var target_system: Node2D = %TargetSystem
 
 var current_health = 70
@@ -29,7 +28,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if current_state != State.ATTACK:
 		move()
-	
 
 func base_attack():
 	var target_enemy = target_system.get_current_target() as Node2D
@@ -69,6 +67,7 @@ func base_attack():
 			animated_sprite.play("attack_up")
 	await animated_sprite.animation_finished
 	current_state = State.IDLE
+
 
 func movement_vector():
 	var movement_x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
