@@ -201,6 +201,7 @@ radius = 9.7737
 script = ExtResource("1_tu2m7")
 
 [node name="HealthComponent" parent="." instance=ExtResource("6_u8b2j")]
+max_health = 100.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -17)

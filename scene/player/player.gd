@@ -20,6 +20,12 @@ var current_state:State = State.IDLE
 var player_status_bars: PlayerStatusBar
 var joystick: Node2D
 
+
+# Переменные отвечающие за атаку
+var can_attack = true
+var attack_animation_speed = 4  # Базовая скорость анимации
+
+
 func _ready() -> void:
 	player_status_bars = player_ui.player_status_bars
 	joystick = player_ui.joystick
@@ -30,13 +36,16 @@ func _process(_delta: float) -> void:
 		move()
 
 func base_attack():
+	if current_state == State.ATTACK:
+		return
 	var target_enemy = target_system.get_current_target()
 	var attack_range = 25
 	if not target_enemy:
 		return
 	# Проверка расстояния до цели
 	var distance = global_position.distance_to(target_enemy.global_position)
-	
+	# Устанавливаем скорость анимации
+	animated_sprite.speed_scale = attack_animation_speed
 	if distance > attack_range:
 		print("Цель вне зоны досягаемости")
 		current_state = State.IDLE
@@ -106,6 +115,8 @@ func move():
 	#else:
 		#velocity = Vector2.ZERO
 	move_and_slide()
+		#возвращаем скорость анимации
+	animated_sprite.speed_scale = 1.0
 	current_state = State.MOVE
 	if direction.y < -0.3:
 		animated_sprite.play("move_up")
