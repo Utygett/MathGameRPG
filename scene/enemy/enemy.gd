@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var speed = 50
+@export var health = 100
 var target = position
 var last_move_direction = Vector2.DOWN  # Сохраняем последнее направление для анимации idle
 

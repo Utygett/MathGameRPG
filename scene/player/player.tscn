@@ -355,7 +355,7 @@ unique_name_in_owner = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -17)
 sprite_frames = SubResource("SpriteFrames_oypl4")
-animation = &"attack_down"
+animation = &"attack_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
@@ -368,3 +368,4 @@ script = ExtResource("4_5lop3")
 [node name="PlayerUI" parent="." instance=ExtResource("5_ajqqa")]
 
 [node name="TargetSystem" parent="." instance=ExtResource("6_rkmeh")]
+unique_name_in_owner = true
