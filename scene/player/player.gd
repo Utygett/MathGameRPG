@@ -57,7 +57,6 @@ func base_attack():
 	# Устанавливаем скорость анимации
 	animated_sprite.speed_scale = attack_animation_speed
 	if distance > attack_range:
-		print("Цель вне зоны досягаемости")
 		current_state = State.IDLE
 		return
 		

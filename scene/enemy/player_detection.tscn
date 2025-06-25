@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtss4occvjsej"]
+
+[ext_resource type="Script" uid="uid://ck5bb1gybm616" path="res://scene/enemy/player_detecion_area.gd" id="1_aalkr"]
+[ext_resource type="Script" uid="uid://sj5xkfkvrb0r" path="res://scene/enemy/plyaer_detection.gd" id="1_vcqak"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3d7io"]
+
+[node name="PlayerDetection" type="Node2D"]
+script = ExtResource("1_vcqak")
+
+[node name="PlayerDetecionArea" type="Area2D" parent="."]
+scale = Vector2(7, 7)
+script = ExtResource("1_aalkr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetecionArea"]
+shape = SubResource("CircleShape2D_3d7io")

@@ -30,7 +30,13 @@ tile_set = ExtResource("1_1c01b")
 unique_name_in_owner = true
 
 [node name="Enemy" parent="BackLayer" instance=ExtResource("4_s8ale")]
-position = Vector2(48, 55)
+position = Vector2(232, -6)
 
 [node name="Enemy2" parent="BackLayer" instance=ExtResource("4_s8ale")]
-position = Vector2(-75, 205)
+position = Vector2(230, 129)
+
+[node name="Enemy3" parent="BackLayer" instance=ExtResource("4_s8ale")]
+position = Vector2(43, 139)
+
+[node name="Enemy4" parent="BackLayer" instance=ExtResource("4_s8ale")]
+position = Vector2(-173, 110)

@@ -3,27 +3,39 @@ extends CharacterBody2D
 @onready var health_component: HealthComponent = $HealthComponent
 
 @export var speed = 50
+var target_plyaer:Node2D = null
 var target = position
 var last_move_direction = Vector2.DOWN  # Сохраняем последнее направление для анимации idle
 
 # Получаем ссылки на ноды
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var targeted: Sprite2D = $Targeted
+@onready var player_detection: Node2D = $PlayerDetection
 
 func _ready() -> void:
+	player_detection.player_detected.connect(player_detected_func)
+	player_detection.player_lost.connect(player_lost_func)
 	health_component.died.connect(on_died)
 
 func _physics_process(delta):
-	var move_direction = position.direction_to(target)
-	velocity = move_direction * speed
-	
-	# Обновляем направление только при движении
-	if position.distance_to(target) > 10:
-		move_and_slide()
-		update_animation(move_direction)
-	else:
-		# При остановке используем последнее направление
-		play_idle_animation(last_move_direction)
+	if target_plyaer:
+		var move_direction = position.direction_to(target_plyaer.global_position)
+		velocity = move_direction * speed
+		# Обновляем направление только при движении
+		if position.distance_to(target) > 10:
+			move_and_slide()
+			update_animation(move_direction)
+		else:
+			# При остановке используем последнее направление
+			play_idle_animation(last_move_direction)
+
+
+func player_detected_func(player:Node2D):
+	target_plyaer = player
+
+func player_lost_func():
+	target_plyaer = null
+
 
 
 func update_animation(direction: Vector2):
