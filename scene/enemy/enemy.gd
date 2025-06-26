@@ -1,8 +1,19 @@
+class_name Enemy
 extends CharacterBody2D
 
 @onready var health_component: HealthComponent = $HealthComponent
 
+
+@export_category("State Machine")
+@export var initial_state: EnemyState
+
+@export_category("Combat Settings")
+@export var attack_range: float = 50.0
+@export var chase_range: float = 300.0
+@export var health: int = 100
 @export var speed = 50
+
+
 var target_plyaer:Node2D = null
 var target = position
 var last_move_direction = Vector2.DOWN  # Сохраняем последнее направление для анимации idle
@@ -11,18 +22,25 @@ var last_move_direction = Vector2.DOWN  # Сохраняем последнее 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var targeted: Sprite2D = $Targeted
 @onready var player_detection: Node2D = $PlayerDetection
+@onready var state_machine: StateMachine = $StateMachine
 
 func _ready() -> void:
 	player_detection.player_detected.connect(player_detected_func)
 	player_detection.player_lost.connect(player_lost_func)
 	health_component.died.connect(on_died)
+	
+	state_machine.init(self)
+
+func _process(delta: float) -> void:
+	state_machine.process_frame(delta)
 
 func _physics_process(delta):
+	state_machine.process_physics(delta)
 	if target_plyaer:
 		var move_direction = position.direction_to(target_plyaer.global_position)
 		velocity = move_direction * speed
 		# Обновляем направление только при движении
-		if position.distance_to(target) > 10:
+		if position.distance_to(target_plyaer.global_position) > 15:
 			move_and_slide()
 			update_animation(move_direction)
 		else:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c4xufgjfvkk6g"]
+[gd_scene load_steps=33 format=3 uid="uid://c4xufgjfvkk6g"]
 
 [ext_resource type="Texture2D" uid="uid://b1m86yicmou3q" path="res://assets/enemy/Slime_Spiked_Ability.png" id="1_msiye"]
 [ext_resource type="Script" uid="uid://c2sun7dooa7mx" path="res://scene/enemy/enemy.gd" id="1_tu2m7"]
@@ -8,6 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://dbk66ojamrf50" path="res://assets/level/objects/Egg_item.png" id="5_dd7y5"]
 [ext_resource type="PackedScene" uid="uid://pu60fle5eyc7" path="res://scene/components/health_component.tscn" id="6_u8b2j"]
 [ext_resource type="PackedScene" uid="uid://dtss4occvjsej" path="res://scene/enemy/player_detection.tscn" id="8_2ragj"]
+[ext_resource type="PackedScene" uid="uid://c11ud6anpud3" path="res://scene/enemy/state_machine.tscn" id="9_epgpp"]
+[ext_resource type="PackedScene" uid="uid://cmarc5a5qtqta" path="res://scene/enemy/states/enemy_state.tscn" id="10_t48t5"]
+[ext_resource type="PackedScene" uid="uid://co2n1bva0vshk" path="res://scene/enemy/states/idle_state.tscn" id="11_b2wsj"]
+[ext_resource type="PackedScene" uid="uid://ctnw387iagt6p" path="res://scene/enemy/states/alert_state.tscn" id="12_iy2ta"]
+[ext_resource type="PackedScene" uid="uid://cw31nvb8l4ino" path="res://scene/enemy/states/chase_state.tscn" id="13_5i3tu"]
+[ext_resource type="PackedScene" uid="uid://j5vflqjgnl1q" path="res://scene/enemy/states/attack_state.tscn" id="14_x1mk6"]
+[ext_resource type="PackedScene" uid="uid://dnteisxmymjwr" path="res://scene/enemy/states/search_state.tscn" id="15_y6bd8"]
+[ext_resource type="PackedScene" uid="uid://bwcnbh8job52w" path="res://scene/enemy/states/retreat_state.tscn" id="16_l6kfn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ragj"]
 content_margin_left = 1.0
@@ -226,8 +234,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_nytjq"]
 radius = 9.7737
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("initial_state") groups=["enemies"]]
 script = ExtResource("1_tu2m7")
+initial_state = NodePath("StateMachine/IdleState")
 
 [node name="HealthComponent" parent="." instance=ExtResource("6_u8b2j")]
 unique_name_in_owner = true
@@ -269,3 +278,20 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_dd7y5")
 
 [node name="PlayerDetection" parent="." instance=ExtResource("8_2ragj")]
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("9_epgpp")]
+initial_state = NodePath("IdleState")
+
+[node name="EnemyState" parent="StateMachine" instance=ExtResource("10_t48t5")]
+
+[node name="IdleState" parent="StateMachine" instance=ExtResource("11_b2wsj")]
+
+[node name="AlertState" parent="StateMachine" instance=ExtResource("12_iy2ta")]
+
+[node name="ChaseState" parent="StateMachine" instance=ExtResource("13_5i3tu")]
+
+[node name="AttackState" parent="StateMachine" instance=ExtResource("14_x1mk6")]
+
+[node name="SearchState" parent="StateMachine" instance=ExtResource("15_y6bd8")]
+
+[node name="RetreatState" parent="StateMachine" instance=ExtResource("16_l6kfn")]

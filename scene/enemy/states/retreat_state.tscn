@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwcnbh8job52w"]
+
+[ext_resource type="Script" uid="uid://rrwh0k8xndyy" path="res://scene/enemy/states/retreat_state.gd" id="1_y672e"]
+
+[node name="RetreatState" type="Node"]
+script = ExtResource("1_y672e")
+metadata/_custom_type_script = "uid://7hljexetskv1"

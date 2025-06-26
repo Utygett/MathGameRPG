@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnteisxmymjwr"]
+
+[ext_resource type="Script" uid="uid://yjg7kjd2pq4d" path="res://scene/enemy/states/search_state.gd" id="1_yfsll"]
+
+[node name="SearchState" type="Node"]
+script = ExtResource("1_yfsll")
+metadata/_custom_type_script = "uid://7hljexetskv1"

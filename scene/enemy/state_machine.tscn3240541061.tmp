@@ -1,0 +1,39 @@
+[gd_scene load_steps=9 format=3 uid="uid://c11ud6anpud3"]
+
+[ext_resource type="Script" uid="uid://cy1qhfo61ollv" path="res://scene/enemy/state_machine.gd" id="1_r1set"]
+[ext_resource type="PackedScene" uid="uid://cmarc5a5qtqta" path="res://scene/enemy/states/enemy_state.tscn" id="2_321ka"]
+[ext_resource type="Script" uid="uid://bfqfs711maij8" path="res://scene/enemy/idle_state.gd" id="3_tsjfx"]
+[ext_resource type="Script" uid="uid://2g3qinjtpud5" path="res://scene/enemy/alert_state.gd" id="4_tsjfx"]
+[ext_resource type="Script" uid="uid://cvdf0ct6y1xc8" path="res://scene/enemy/states/chase_state.gd" id="5_vvr7p"]
+[ext_resource type="Script" uid="uid://bcocm324jy6fu" path="res://scene/enemy/attack_state.gd" id="6_nm6q0"]
+[ext_resource type="Script" uid="uid://yjg7kjd2pq4d" path="res://scene/enemy/states/search_state.gd" id="7_bqavc"]
+[ext_resource type="Script" uid="uid://rrwh0k8xndyy" path="res://scene/enemy/states/retreat_state.gd" id="8_nm6q0"]
+
+[node name="StateMachine" type="Node"]
+script = ExtResource("1_r1set")
+
+[node name="EnemyState" parent="." instance=ExtResource("2_321ka")]
+
+[node name="IdleState" type="Node" parent="."]
+script = ExtResource("3_tsjfx")
+metadata/_custom_type_script = "uid://7hljexetskv1"
+
+[node name="AlertState" type="Node" parent="."]
+script = ExtResource("4_tsjfx")
+metadata/_custom_type_script = "uid://7hljexetskv1"
+
+[node name="ChaseState" type="Node" parent="."]
+script = ExtResource("5_vvr7p")
+metadata/_custom_type_script = "uid://7hljexetskv1"
+
+[node name="AttackState" type="Node" parent="."]
+script = ExtResource("6_nm6q0")
+metadata/_custom_type_script = "uid://7hljexetskv1"
+
+[node name="SearchState" type="Node" parent="."]
+script = ExtResource("7_bqavc")
+metadata/_custom_type_script = "uid://7hljexetskv1"
+
+[node name="RetreatState" type="Node" parent="."]
+script = ExtResource("8_nm6q0")
+metadata/_custom_type_script = "uid://7hljexetskv1"
