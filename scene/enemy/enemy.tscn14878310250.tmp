@@ -279,7 +279,8 @@ texture = ExtResource("5_dd7y5")
 
 [node name="PlayerDetection" parent="." instance=ExtResource("8_2ragj")]
 
-[node name="StateMachine" parent="." instance=ExtResource("9_epgpp")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("9_epgpp")]
+initial_state = NodePath("IdleState")
 
 [node name="EnemyState" parent="StateMachine" instance=ExtResource("10_t48t5")]
 

@@ -9,19 +9,22 @@ func enter() -> void:
 	enemy.animation_player.play("retreat")
 	safe_position = find_safe_position()
 
-func process_frame(delta: float) -> void:
+func update(delta) -> String:
 	# Проверка преследования
 	if enemy.global_position.distance_to(enemy.player.global_position) < enemy.attack_range:
-		state_machine.change_state(state_machine.get_node("ChaseState"))
+		return "ChaseState"
 	
 	# Достигнута безопасная зона
 	if enemy.global_position.distance_to(safe_position) < 10:
 		enemy.health = min(enemy.health + heal_amount, 100)
-		state_machine.change_state(state_machine.get_node("IdleState"))
+		return "IdleState"
 	
 	# Движение к безопасной точке
 	var direction = (safe_position - enemy.global_position).normalized()
 	enemy.velocity = direction * enemy.retreat_speed
+	return ""
+
+
 
 func find_safe_position() -> Vector2:
 	var safe_zones = get_tree().get_nodes_in_group("safe_zone")

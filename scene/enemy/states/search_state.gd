@@ -6,17 +6,17 @@ var search_positions: Array = []
 
 func enter() -> void:
 	enemy.text_status.text = "search"
-	enemy.animation_player.play("search")
+	#enemy.animation_player.play("search")
 	search_timer = 10.0
 	generate_search_positions()
 
-func process_frame(delta: float) -> void:
+func update(delta) -> String:
 	search_timer -= delta
 	
 	if can_see_player(false): # Без проверки расстояния
-		state_machine.change_state(state_machine.get_node("ChaseState"))
+		return "ChaseState"
 	elif search_timer <= 0:
-		state_machine.change_state(state_machine.get_node("AlertState"))
+		return "AlertState"
 	
 	# Поисковое поведение
 	if enemy.global_position.distance_to(search_positions[0]) < 5:
@@ -26,6 +26,7 @@ func process_frame(delta: float) -> void:
 	
 	var direction = (search_positions[0] - enemy.global_position).normalized()
 	enemy.velocity = direction * enemy.search_speed
+	return ""
 
 func generate_search_positions() -> void:
 	for i in range(5):

@@ -10,13 +10,13 @@ func enter() -> void:
 	#enemy.animated_sprite.play("idle")
 	generate_random_patrol(4, 100.0)
 
-func process_frame(delta: float) -> void:
+func update(delta) -> String:
 	# Проверка обнаружения игрока
 	if can_see_player(true): # С проверкой расстояния
-		state_machine.change_state(state_machine.get_node("AlertState"))
-	
+		return "AlertState"
 	# Патрулирование
 	patrol(delta)
+	return ""
 
 
 func patrol(delta: float) -> void:

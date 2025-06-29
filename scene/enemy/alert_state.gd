@@ -10,14 +10,15 @@ func enter() -> void:
 	investigation_position = enemy.target_plyaer.global_position
 	alert_timer = 5.0
 
-func process_frame(delta: float) -> void:
+
+func update(delta) -> String:
 	alert_timer -= delta
-	
 	if can_see_player(false): # Без проверки расстояния
-		state_machine.change_state(state_machine.get_node("ChaseState"))
+		return "ChaseState"
 	elif alert_timer <= 0:
-		state_machine.change_state(state_machine.get_node("IdleState"))
+		return"IdleState"
 	
 	# Движение к точке интереса
 	var direction = (investigation_position - enemy.global_position).normalized()
 	enemy.velocity = direction * enemy.alert_speed
+	return ""

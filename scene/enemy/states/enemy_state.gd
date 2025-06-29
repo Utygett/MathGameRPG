@@ -1,25 +1,15 @@
 class_name EnemyState
 extends Node
 
-# Ссылка на врага и машину состояний
-var enemy: CharacterBody2D
+signal state_completed(next_state_name)
+
 var state_machine: StateMachine
+var enemy: Enemy
 
-func enter() -> void:
-	print("EnemyState Enter")
-	pass
-
-func exit() -> void:
-	pass
-
-func process_frame(_delta: float) -> void:
-	pass
-
-func process_physics(_delta: float) -> void:
-	pass
-
-func handle_event(_event: InputEvent) -> void:
-	pass
+func enter(): pass
+func exit(): pass
+func update(delta: float) -> String: return ""  # Возвращает имя следующего состояния
+func physics_update(delta: float): pass
 
 # Общая функция проверки видимости игрока
 func can_see_player(check_distance: bool = true) -> bool:

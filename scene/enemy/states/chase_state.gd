@@ -3,16 +3,17 @@ extends EnemyState
 
 var last_known_position: Vector2
 
-func enter() -> void:
-	enemy.text_status.text = "chase"
-	enemy.animation_player.play("chase")
+func enter():
+	enemy.animation_player.play("run")
 
-func process_frame(delta: float) -> void:
-	if can_see_player(false): # Без проверки расстояния
-		last_known_position = enemy.player.global_position
-		enemy.velocity = (last_known_position - enemy.global_position).normalized() * enemy.chase_speed
-		
-		if enemy.global_position.distance_to(enemy.player.global_position) < enemy.attack_range:
-			state_machine.change_state(state_machine.get_node("AttackState"))
-	else:
-		state_machine.change_state(state_machine.get_node("SearchState"))
+func update(delta) -> String:
+	if not enemy.can_see_player():
+		return "SearchState"
+	if enemy.distance_to_player() < enemy.attack_range:
+		return "AttackState"
+	return ""
+
+func physics_update(delta):
+	var direction = (enemy.player.position - enemy.position).normalized()
+	enemy.velocity = direction * enemy.chase_speed
+	enemy.move_and_slide()

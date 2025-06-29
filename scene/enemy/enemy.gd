@@ -34,10 +34,10 @@ func _ready() -> void:
 	state_machine.init(self)
 
 func _process(delta: float) -> void:
-	state_machine.process_frame(delta)
+	#state_machine.process(delta)
+	pass
 
 func _physics_process(delta):
-	state_machine.process_physics(delta)
 	if target_plyaer:
 		var move_direction = position.direction_to(target_plyaer.global_position)
 		velocity = move_direction * speed
