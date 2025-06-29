@@ -4,6 +4,7 @@ extends EnemyState
 var last_known_position: Vector2
 
 func enter() -> void:
+	enemy.text_status.text = "chase"
 	enemy.animation_player.play("chase")
 
 func process_frame(delta: float) -> void:

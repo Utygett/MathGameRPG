@@ -5,6 +5,7 @@ var attack_cooldown: float = 1.0
 var damage: int = 10
 
 func enter() -> void:
+	enemy.text_status.text = "attack"
 	enemy.animation_player.play("attack")
 
 func process_frame(delta: float) -> void:

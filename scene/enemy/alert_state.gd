@@ -5,8 +5,9 @@ var investigation_position: Vector2
 var alert_timer: float = 5.0
 
 func enter() -> void:
-	enemy.animation_player.play("alert")
-	investigation_position = enemy.player.last_known_position
+	enemy.text_status.text = "alert"
+	#enemy.animation_player.play("alert")
+	investigation_position = enemy.target_plyaer.global_position
 	alert_timer = 5.0
 
 func process_frame(delta: float) -> void:

@@ -9,10 +9,11 @@ extends CharacterBody2D
 
 @export_category("Combat Settings")
 @export var attack_range: float = 50.0
-@export var chase_range: float = 300.0
+@export var chase_range: float = 150.0
 @export var health: int = 100
-@export var speed = 50
-
+@export var speed = 40
+@export var patrol_speed = 20
+@export var alert_speed = 25
 
 var target_plyaer:Node2D = null
 var target = position
@@ -23,6 +24,7 @@ var last_move_direction = Vector2.DOWN  # Сохраняем последнее 
 @onready var targeted: Sprite2D = $Targeted
 @onready var player_detection: Node2D = $PlayerDetection
 @onready var state_machine: StateMachine = $StateMachine
+@onready var text_status: Label = $TextStatus
 
 func _ready() -> void:
 	player_detection.player_detected.connect(player_detected_func)
@@ -46,6 +48,8 @@ func _physics_process(delta):
 		else:
 			# При остановке используем последнее направление
 			play_idle_animation(last_move_direction)
+	else :
+		move_and_slide()
 
 
 func player_detected_func(player:Node2D):

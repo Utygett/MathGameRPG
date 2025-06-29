@@ -5,6 +5,7 @@ var search_timer: float = 10.0
 var search_positions: Array = []
 
 func enter() -> void:
+	enemy.text_status.text = "search"
 	enemy.animation_player.play("search")
 	search_timer = 10.0
 	generate_search_positions()

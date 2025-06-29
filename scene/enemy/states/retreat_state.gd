@@ -5,6 +5,7 @@ var safe_position: Vector2
 var heal_amount: int = 5
 
 func enter() -> void:
+	enemy.text_status.text = "retreat"
 	enemy.animation_player.play("retreat")
 	safe_position = find_safe_position()
 

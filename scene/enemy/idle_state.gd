@@ -1,14 +1,14 @@
 class_name IdleState
 extends EnemyState
 
-var patrol_path: Path2D
-var patrol_points: Array
+var patrol_points: Array[Vector2] = []
 var current_patrol_index: int = 0
+var base_position: Vector2  # Запомним начальную позицию
 
 func enter() -> void:
-	enemy.animated_sprite.play("idle")
-	patrol_path = enemy.get_node("PatrolPath")
-	patrol_points = patrol_path.curve.get_baked_points()
+	enemy.text_status.text = "idle"
+	#enemy.animated_sprite.play("idle")
+	generate_random_patrol(4, 100.0)
 
 func process_frame(delta: float) -> void:
 	# Проверка обнаружения игрока
@@ -30,3 +30,9 @@ func patrol(delta: float) -> void:
 	
 	var direction = (target - enemy.global_position).normalized()
 	enemy.velocity = direction * enemy.patrol_speed
+
+func generate_random_patrol(point_count: int, radius: float) -> void:
+	for i in range(point_count):
+		var angle = TAU * i / point_count
+		var offset = Vector2(cos(angle), sin(angle)) * radius * randf_range(0.8, 1.2)
+		patrol_points.append(base_position + offset)
