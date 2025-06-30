@@ -4,12 +4,13 @@ extends EnemyState
 var last_known_position: Vector2
 
 func enter():
-	enemy.animation_player.play("run")
+	enemy.text_status.text = "chase"
+	#enemy.animation_player.play("run")
 
 func update(delta) -> String:
-	if not enemy.can_see_player():
+	if not can_see_player():
 		return "SearchState"
-	if enemy.distance_to_player() < enemy.attack_range:
+	if enemy.global_position.distance_to(enemy.target_plyaer.global_position) < enemy.attack_range:
 		return "AttackState"
 	return ""
 

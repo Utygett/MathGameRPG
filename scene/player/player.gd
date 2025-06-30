@@ -84,11 +84,13 @@ func base_attack():
 			# Атака вверх
 			animated_sprite.play("attack_up")
 	spent_mathemana(1)
-	health_component.take_damage(3, target_enemy)
+	#health_component.take_damage(3, target_enemy)
 	target_enemy.take_damage(get_base_attack_damage())
 	await animated_sprite.animation_finished
 	current_state = State.IDLE
 
+func take_damage(damage:float, source = null):
+	health_component.take_damage(damage, source)
 
 func movement_vector():
 	var movement_x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")

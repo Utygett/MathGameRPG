@@ -8,12 +8,14 @@ extends CharacterBody2D
 @export var initial_state: EnemyState
 
 @export_category("Combat Settings")
-@export var attack_range: float = 50.0
+@export var attack_range: float = 20.0
 @export var chase_range: float = 150.0
 @export var health: int = 100
 @export var speed = 40
 @export var patrol_speed = 20
 @export var alert_speed = 25
+@export var retreat_speed = 35
+@export var search_speed = 25
 
 var target_plyaer:Node2D = null
 var target = position
@@ -38,7 +40,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _physics_process(delta):
-	if target_plyaer:
+	if target_plyaer && health_component.current_health > 20:
 		var move_direction = position.direction_to(target_plyaer.global_position)
 		velocity = move_direction * speed
 		# Обновляем направление только при движении

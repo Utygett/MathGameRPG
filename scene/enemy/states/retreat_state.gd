@@ -6,17 +6,18 @@ var heal_amount: int = 5
 
 func enter() -> void:
 	enemy.text_status.text = "retreat"
-	enemy.animation_player.play("retreat")
+	#enemy.animation_player.play("retreat")
 	safe_position = find_safe_position()
 
 func update(delta) -> String:
+	
 	# Проверка преследования
-	if enemy.global_position.distance_to(enemy.player.global_position) < enemy.attack_range:
+	if enemy.health_component.current_health > 20 && enemy.global_position.distance_to(enemy.target_plyaer.global_position) < enemy.attack_range:
 		return "ChaseState"
 	
 	# Достигнута безопасная зона
 	if enemy.global_position.distance_to(safe_position) < 10:
-		enemy.health = min(enemy.health + heal_amount, 100)
+		enemy.health_component.current_health = min(enemy.health + heal_amount, 100)
 		return "IdleState"
 	
 	# Движение к безопасной точке
